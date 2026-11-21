@@ -1,7 +1,7 @@
 class D8ctl < Formula
   desc "One CLI for every Camunda API, built for agents"
   homepage "https://camunda.github.io/d8ctl/"
-  version "0.9.2"
+  version "0.11.0"
   license "Apache-2.0"
 
   # Prebuilt release binaries; `.github/workflows/update.yml` bumps the version
@@ -13,23 +13,23 @@ class D8ctl < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/camunda/d8ctl/releases/download/v0.9.2/d8ctl-darwin-arm64"
-      sha256 "dad7c458077e3f6949306290b9c5f62f3548ee40eee952e6c966a0babcfba7c0"
+      url "https://github.com/camunda/d8ctl/releases/download/v0.11.0/d8ctl-darwin-arm64"
+      sha256 "1a4b6a2a7a7e24f4bcd6c29b18735a3bd1a9aee316334d725431389231dcbff4"
     end
     on_intel do
-      url "https://github.com/camunda/d8ctl/releases/download/v0.9.2/d8ctl-darwin-amd64"
-      sha256 "49a45aac8f55e93531a6dd3f1124fbdc25ac19d6f1e9313148898602411822bd"
+      url "https://github.com/camunda/d8ctl/releases/download/v0.11.0/d8ctl-darwin-amd64"
+      sha256 "edacaa6b4acbc7b328158a8e28d3eebdc497041eaaa4937a1ad73ad8a9a75875"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/camunda/d8ctl/releases/download/v0.9.2/d8ctl-linux-arm64"
-      sha256 "902d9bb0a5002e6c6ea30668444acc9f75bd56dafd52e1d8995ebfd4243331a9"
+      url "https://github.com/camunda/d8ctl/releases/download/v0.11.0/d8ctl-linux-arm64"
+      sha256 "ed80d83c86117dc81bad8c421775e3aa017e51d32f89ba5a56ed4a043dcc3663"
     end
     on_intel do
-      url "https://github.com/camunda/d8ctl/releases/download/v0.9.2/d8ctl-linux-amd64"
-      sha256 "8eb38ad3343de0d818af78a65fc901e94cf35c4be3ce47f24a3f2ff4f2624c58"
+      url "https://github.com/camunda/d8ctl/releases/download/v0.11.0/d8ctl-linux-amd64"
+      sha256 "98096ec51e836ed0da06c0093af4e263d1776c140679969e7bb7be0f0a6325b4"
     end
   end
 
@@ -38,10 +38,12 @@ class D8ctl < Formula
 
   def install
     bin.install Dir["d8ctl-*"].first => "d8ctl"
+    generate_completions_from_executable(bin/"d8ctl", "completion")
   end
 
   test do
     assert_match "d8ctl #{version} ", shell_output("#{bin}/d8ctl --version")
+    assert_match "topology", shell_output("#{bin}/d8ctl __complete cluster topo")
     # No server needed: a refused connection is a structured network error (exit 7).
     output = shell_output("#{bin}/d8ctl cluster topology get --camunda-rest-address=http://127.0.0.1:9 2>&1", 7)
     assert_match "\"kind\":\"network\"", output
