@@ -1,7 +1,7 @@
 class D8ctl < Formula
   desc "One CLI for every Camunda API, built for agents"
   homepage "https://camunda.github.io/d8ctl/"
-  version "0.11.0"
+  version "0.11.1"
   license "Apache-2.0"
 
   # Prebuilt release binaries; `.github/workflows/update.yml` bumps the version
@@ -13,23 +13,23 @@ class D8ctl < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/camunda/d8ctl/releases/download/v0.11.0/d8ctl-darwin-arm64"
-      sha256 "1a4b6a2a7a7e24f4bcd6c29b18735a3bd1a9aee316334d725431389231dcbff4"
+      url "https://github.com/camunda/d8ctl/releases/download/v0.11.1/d8ctl-darwin-arm64"
+      sha256 "7cf3f6b252f6f54d45c65f623c2fa1ddb9ca9e4b2c94828cabf8a8a73cccf74e"
     end
     on_intel do
-      url "https://github.com/camunda/d8ctl/releases/download/v0.11.0/d8ctl-darwin-amd64"
-      sha256 "edacaa6b4acbc7b328158a8e28d3eebdc497041eaaa4937a1ad73ad8a9a75875"
+      url "https://github.com/camunda/d8ctl/releases/download/v0.11.1/d8ctl-darwin-amd64"
+      sha256 "2ae2e5374bdf45a9f3cfb23649954802906ff2a5888447dda3b0401d7d6ab7d8"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/camunda/d8ctl/releases/download/v0.11.0/d8ctl-linux-arm64"
-      sha256 "ed80d83c86117dc81bad8c421775e3aa017e51d32f89ba5a56ed4a043dcc3663"
+      url "https://github.com/camunda/d8ctl/releases/download/v0.11.1/d8ctl-linux-arm64"
+      sha256 "33f871ef0ff3cf8708ea00a3ee2b7bfb3f9700aa620dc04395e330b8498f4ad1"
     end
     on_intel do
-      url "https://github.com/camunda/d8ctl/releases/download/v0.11.0/d8ctl-linux-amd64"
-      sha256 "98096ec51e836ed0da06c0093af4e263d1776c140679969e7bb7be0f0a6325b4"
+      url "https://github.com/camunda/d8ctl/releases/download/v0.11.1/d8ctl-linux-amd64"
+      sha256 "5364822d10bf3e963221081362565adb5c40a482ec0fd7645cc812a2f6a839e4"
     end
   end
 
