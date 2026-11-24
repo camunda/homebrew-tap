@@ -37,6 +37,8 @@ class D8ctl < Formula
 
   def install
     bin.install Dir["d8ctl-*"].first => "d8ctl"
+    # Release assets are bare binaries; the download doesn't keep the exec bit.
+    chmod 0755, bin/"d8ctl"
     generate_completions_from_executable(bin/"d8ctl", "completion")
   end
 
