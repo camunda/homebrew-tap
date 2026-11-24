@@ -51,7 +51,8 @@ def sha256(data):
 
 def update_d8ctl():
     path, text = formula("d8ctl")
-    old = re.search(r'^  version "([^"]+)"', text, re.M).group(1)
+    # brew reads the version from the url (an explicit `version` fails audit).
+    old = re.search(r'releases/download/v([^/]+)/', text).group(1)
     releases = json.loads(get("https://api.github.com/repos/camunda/d8ctl/releases?per_page=20",
                               "application/vnd.github+json"))
     release = next(r for r in releases if not r["draft"])
@@ -76,7 +77,6 @@ def update_d8ctl():
         )
         if n != 1:
             sys.exit(f"Formula/d8ctl.rb: expected one url+sha256 pair for {asset}, found {n}")
-    text = re.sub(r'^  version "[^"]+"', f'  version "{new}"', text, count=1, flags=re.M)
     save(path, text)
     print(f"d8ctl {old} -> {new}")
 
