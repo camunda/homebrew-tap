@@ -1,0 +1,33 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: tests-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  formula:
+    name: ${{ matrix.formula }} (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-15, macos-15-intel, ubuntu-24.04, ubuntu-24.04-arm]
+        formula: [d8ctl, c8ctl]
+    steps:
+      - uses: Homebrew/actions/setup-homebrew@main
+        id: brew
+      # setup-homebrew taps this checkout as camunda/tap.
+      - run: brew style camunda/tap/${{ matrix.formula }}
+      - run: brew audit --strict --formula camunda/tap/${{ matrix.formula }}
+      - run: brew install --formula camunda/tap/${{ matrix.formula }}
+      - run: brew test camunda/tap/${{ matrix.formula }}
+      - run: brew uninstall --formula ${{ matrix.formula }}
