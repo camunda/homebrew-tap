@@ -12,23 +12,23 @@ class D8ctl < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/camunda/d8ctl/releases/download/v0.12.0/d8ctl-darwin-arm64"
-      sha256 "447871e9c42aebfad2475ad154f9ea28bc32d6633a8d9038cf09b364f5863c1f"
+      url "https://github.com/camunda/d8ctl/releases/download/v0.13.0/d8ctl-darwin-arm64"
+      sha256 "cd3f83a89f3bbf7c6297272ca718a9110ad4e887980f348b5751f3fdfe573d1e"
     end
     on_intel do
-      url "https://github.com/camunda/d8ctl/releases/download/v0.12.0/d8ctl-darwin-amd64"
-      sha256 "3c1a0a5126f034782f505072a93e63019be978a0bfe4ff946ce58bf148d9af2c"
+      url "https://github.com/camunda/d8ctl/releases/download/v0.13.0/d8ctl-darwin-amd64"
+      sha256 "03bb3e2d87fe62e586b3478ce2d8988f2caf3311036dd8e8805a305ac8965e4d"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/camunda/d8ctl/releases/download/v0.12.0/d8ctl-linux-arm64"
-      sha256 "39a8e0c72b154b2774768ddfa30b3739cfe78ab97558fdc9a6dd7593d4dc5fdf"
+      url "https://github.com/camunda/d8ctl/releases/download/v0.13.0/d8ctl-linux-arm64"
+      sha256 "5d1c417ed0f27bbbcc1540487f7b2e67ae83bf949ab25febcfa8ef1e4f67d24e"
     end
     on_intel do
-      url "https://github.com/camunda/d8ctl/releases/download/v0.12.0/d8ctl-linux-amd64"
-      sha256 "6cddfa117cd4f28ff8556bed28cfac017b1ad080ca798a31c6142547c0be92e5"
+      url "https://github.com/camunda/d8ctl/releases/download/v0.13.0/d8ctl-linux-amd64"
+      sha256 "5331a9eadc795c8c1237aefbb935208936c2726828f1abc1879b5c97ff2fe523"
     end
   end
 
